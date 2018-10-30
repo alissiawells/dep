@@ -381,28 +381,6 @@ func (e DeductionErrs) Error() string {
 	return "could not deduce external imports' project roots"
 }
 
-// ValidateParams validates the solver parameters to ensure solving can be completed.
-func ValidateParams(params SolveParameters, sm SourceManager) error {
-	// Ensure that all packages are deducible without issues.
-	var deducePkgsGroup sync.WaitGroup
-	deductionErrs := make(DeductionErrs)
-	var errsMut sync.Mutex
-
-	rd, err := params.toRootdata()
-	if err != nil {
-		return err
-	}
-
-	deducePkg := func(ip string, sm SourceManager) {
-		_, err := sm.DeduceProjectRoot(ip)
-		if err != nil {
-			errsMut.Lock()
-			deductionErrs[ip] = err
-			errsMut.Unlock()
-		}
-		deducePkgsGroup.Done()
-	}
-
 	for _, ip := range rd.externalImportList(paths.IsStandardImportPath) {
 		deducePkgsGroup.Add(1)
 		go deducePkg(ip, sm)
