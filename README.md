@@ -9,7 +9,7 @@
 
 [dep](https://golang.github.io/dep/). is a dependency management tool for Go. It requires Go 1.9 or newer to compile.
 
-### However there's no appropriate version of Go for some Linux distributives, and `dep init` does not write out a partial Gopkg.toml when it fails. Removing functions `ValidateProjectRoots` and `ValidateParams` and rebuilding dep fixed the issue in my case (it is described [here](https://github.com/golang/dep/issues/909)) 
+However, there's no appropriate version of Go for some Linux distributives, and `dep init` does not write out a partial Gopkg.toml when it fails. Removing functions `ValidateProjectRoots` and `ValidateParams` and rebuilding dep fixed the issue in my case (it is described [here](https://github.com/golang/dep/issues/909)) 
 
 ## Installation
 
