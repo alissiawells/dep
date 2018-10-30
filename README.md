@@ -1,5 +1,5 @@
 ## Dep
- Some consider `go modules` is kosher. Others use a custom dependency management tool for Golang. But if you use third-party libraries, you must obey the choice of the another developer regarding this.
+ Some consider `go modules` is kosher. Others use a custom dependency management tool for Golang. But if you use third-party libraries, you must obey the choice of the another developer regarding this (probably gophers love pain).
 
 [Dep](https://golang.github.io/dep/) is a dependency management tool for Go that requires Go 1.9 or newer to compile.
 Since there's no appropriate version of Go for some Linux distributives, `dep init` does not write out a partial Gopkg.toml when it fails. 
