@@ -369,10 +369,6 @@ func (cmd *ensureCommand) runAdd(ctx *dep.Ctx, args []string, p *dep.Project, sm
 		return errors.New("must specify at least one project or package to -add")
 	}
 
-	if err := ctx.ValidateParams(sm, params); err != nil {
-		return err
-	}
-
 	// Compile unique sets of 1) all external packages imported or required, and
 	// 2) the project roots under which they fall.
 	exmap := make(map[string]bool)
