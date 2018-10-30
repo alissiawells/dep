@@ -218,11 +218,5 @@ func TestValidateParams(t *testing.T) {
 			},
 		}
 
-		err = ValidateParams(params, sm)
-		if tc.err && err == nil {
-			t.Fatalf("expected an error when deducing package fails, got none")
-		} else if !tc.err && err != nil {
-			t.Fatalf("deducing packges should have succeeded, got err: %#v", err)
-		}
 	}
 }
