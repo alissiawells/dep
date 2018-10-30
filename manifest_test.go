@@ -639,23 +639,6 @@ func TestValidateProjectRoots(t *testing.T) {
 	h.Must(err)
 	defer sm.Release()
 
-	for _, c := range cases {
-		t.Run(c.name, func(t *testing.T) {
-			// Empty the buffer for every case
-			stderrOutput.Reset()
-			err := ValidateProjectRoots(ctx, &c.manifest, sm)
-			if err != c.wantError {
-				t.Fatalf("unexpected error while validating project roots:\n\t(GOT): %v\n\t(WNT): %v", err, c.wantError)
-			}
-
-			warnings := stderrOutput.String()
-			for _, warn := range c.wantWarn {
-				if !strings.Contains(warnings, warn) {
-					t.Fatalf("expected ValidateProjectRoot errors to contain: %q", warn)
-				}
-			}
-		})
-	}
 }
 
 //func TestFromRawPruneOptions(t *testing.T) {
