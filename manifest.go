@@ -294,11 +294,6 @@ func checkRedundantPruneOptions(co gps.CascadingPruneOptions) (warns []error) {
 	return warns
 }
 
-// ValidateProjectRoots validates the project roots present in manifest.
-func ValidateProjectRoots(c *Ctx, m *Manifest, sm gps.SourceManager) error {
-	// Channel to receive all the errors
-	errorCh := make(chan error, len(m.Constraints)+len(m.Ovr))
-
 	var wg sync.WaitGroup
 
 	validate := func(pr gps.ProjectRoot) {
