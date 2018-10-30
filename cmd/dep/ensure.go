@@ -804,7 +804,7 @@ func validateUpdateArgs(ctx *dep.Ctx, args []string, p *dep.Project, sm gps.Sour
 			}
 
 			if !gps.IsAny(pc.Constraint) {
-				// TODO(sdboyer) constraints should be allowed to allow solves that
+				// TODO (sdboyer) constraints should be allowed to allow solves that
 				// target particular versions while remaining within declared constraints.
 				errCh <- errors.Errorf("version constraint %s passed for %s, but -update follows constraints declared in %s, not CLI arguments", pc.Constraint, pc.Ident.ProjectRoot, dep.ManifestName)
 				return
