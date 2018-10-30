@@ -247,10 +247,6 @@ func (cmd *ensureCommand) runDefault(ctx *dep.Ctx, args []string, p *dep.Project
 		return errors.New("dep ensure only takes spec arguments with -add or -update")
 	}
 
-	if err := ctx.ValidateParams(sm, params); err != nil {
-		return err
-	}
-
 	var solve bool
 	lock := p.ChangedLock
 	if lock != nil {
@@ -328,10 +324,6 @@ func (cmd *ensureCommand) runVendorOnly(ctx *dep.Ctx, args []string, p *dep.Proj
 func (cmd *ensureCommand) runUpdate(ctx *dep.Ctx, args []string, p *dep.Project, sm gps.SourceManager, params gps.SolveParameters) error {
 	if p.Lock == nil {
 		return errors.Errorf("-update works by updating the versions recorded in %s, but %s does not exist", dep.LockName, dep.LockName)
-	}
-
-	if err := ctx.ValidateParams(sm, params); err != nil {
-		return err
 	}
 
 	// When -update is specified without args, allow every dependency to change
