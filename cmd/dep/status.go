@@ -902,10 +902,6 @@ func (cmd *statusCommand) runStatusAll(ctx *dep.Ctx, out outputter, p *dep.Proje
 		logger = log.New(ioutil.Discard, "", 0)
 	}
 
-	if err := ctx.ValidateParams(sm, params); err != nil {
-		return false, 0, err
-	}
-
 	// Errors while collecting constraints should not fail the whole status run.
 	// It should count the error and tell the user about incomplete results.
 	cm, ccerrs := collectConstraints(ctx, p, sm)
