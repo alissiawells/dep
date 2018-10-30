@@ -143,10 +143,6 @@ func (cmd *initCommand) Run(ctx *dep.Ctx, args []string) error {
 		params.TraceLogger = ctx.Err
 	}
 
-	if err := ctx.ValidateParams(sm, params); err != nil {
-		return errors.Wrapf(err, "init failed: validation of solve parameters failed")
-	}
-
 	s, err := gps.Prepare(params, sm)
 	if err != nil {
 		return errors.Wrap(err, "init failed: unable to prepare the solver")
