@@ -33,8 +33,6 @@ var (
 	errInvalidPruneProject = errors.Errorf("%q must be a TOML array of tables", "prune.project")
 	errInvalidMetadata     = errors.New("metadata should be a TOML table")
 
-	errInvalidProjectRoot = errors.New("ProjectRoot name validation failed")
-
 	errInvalidPruneValue = errors.New("prune options values must be booleans")
 	errPruneSubProject   = errors.New("prune projects should not contain sub projects")
 
@@ -321,18 +319,6 @@ func checkRedundantPruneOptions(co gps.CascadingPruneOptions) (warns []error) {
 
 	wg.Wait()
 	close(errorCh)
-
-	var valErr error
-	if len(errorCh) > 0 {
-		valErr = errInvalidProjectRoot
-		c.Err.Printf("The following issues were found in Gopkg.toml:\n\n")
-		for err := range errorCh {
-			c.Err.Println("  ✗", err.Error())
-		}
-		c.Err.Println()
-	}
-
-	return valErr
 }
 
 // readManifest returns a Manifest read from r and a slice of validation warnings.
