@@ -12,7 +12,7 @@ import (
 	"sync"
 
 	"github.com/pkg/errors"
-	"golang.org/x/sync/errgroup"
+	"github.com/golang/sync/tree/master/errgroup"
 )
 
 // A Solution is returned by a solver run. It is mostly just a Lock, with some
