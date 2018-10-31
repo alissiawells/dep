@@ -13,7 +13,7 @@ import (
 	"github.com/golang/dep/gps"
 	fb "github.com/golang/dep/internal/feedback"
 	"github.com/golang/dep/internal/importers"
-	"https://github.com/golang/sync/tree/master/errgroup"
+	"github.com/golang/sync/tree/master/errgroup"
 )
 
 // rootAnalyzer supplies manifest/lock data from both dep and external tool's
